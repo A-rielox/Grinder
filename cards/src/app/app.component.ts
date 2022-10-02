@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-   title = 'cards';
+   randomText = 'Holi hola pirinola';
+   enteredText = '';
+
+   onInput(value: string) {
+      this.enteredText = value;
+
+      console.log(this.enteredText);
+   }
+
+   compare(letter: string, enteredLetter: string) {
+      if (!enteredLetter) {
+         return 'pending';
+      }
+
+      return letter === enteredLetter ? 'correct' : 'incorrect';
+   }
 }

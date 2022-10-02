@@ -1,0 +1,12 @@
+.pending {
+   color: rgb(69, 67, 67);
+}
+
+.correct {
+   color: rgb(12, 246, 63);
+}
+
+.incorrect {
+   color: rgb(237, 22, 22);
+   font-weight: bold;
+}
