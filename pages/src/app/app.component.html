@@ -1,0 +1,42 @@
+<!-- reemplazando con MI version pirata de [ngClass] ( por mi [appClass]) -->
+<nav>
+  <ul class="pagination">
+    <!-- <li class="page-item" [ngClass]="{ disabled: currentPage <= 0 }"> -->
+    <li class="page-item" [appClass]="{ disabled: currentPage <= 0 }">
+      <a (click)="currentPage = currentPage - 1" class="page-link">Prev</a>
+    </li>
+
+    <ng-container *ngFor="let image of images; let i = index">
+      <li
+        class="page-item"
+        [appClass]="{ active: i === currentPage }"
+        *ngIf="checkWindowIndex(i)"
+      >
+        <a (click)="currentPage = i" class="page-link">{{ i + 1 }}</a>
+      </li>
+    </ng-container>
+
+    <li
+      class="page-item"
+      [appClass]="{ disabled: currentPage >= images.length - 1 }"
+    >
+      <a (click)="currentPage = currentPage + 1" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
+
+<p *appTimes="5">hola</p>
+
+<div>
+  <!-- <h4 appClass [backgroundColor]="'orange'">{{ images[currentPage].title }}</h4> -->
+  <h4 [appClass1]="'orange'">{{ images[currentPage].title }}</h4>
+  <img [src]="images[currentPage].url" />
+</div>
+
+<!-- <div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">Current page is 1</div>
+  <div *ngSwitchCase="2">Current page is 3</div>
+  <div *ngSwitchCase="3">Current page is 4</div>
+
+  <div *ngSwitchDefault>Holi hola</div>
+</div> -->
