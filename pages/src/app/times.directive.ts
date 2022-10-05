@@ -9,14 +9,6 @@ export class TimesDirective {
     for (let i = 0; i < times; i++) {
       this.vcRef.createEmbeddedView(this.templateRef);
     }
-
-    //
-    //
-    // if (!condition) {
-    //   this.vcRef.createEmbeddedView(this.templateRef);
-    // } else {
-    //   this.vcRef.clear();
-    // }
   }
 
   constructor(
