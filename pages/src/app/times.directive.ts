@@ -4,6 +4,7 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
   selector: '[appTimes]',
 })
 export class TimesDirective {
+  // cuando trate de poner la appTimes prop llamo a al fcn "render"
   @Input('appTimes') set render(times: number) {
     this.vcRef.clear();
     for (let i = 0; i < times; i++) {

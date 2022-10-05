@@ -1,8 +1,12 @@
-<app-divider> titulazo </app-divider>
+<div class="ui placeholder segment">
+   <div class="ui icon header">
+      <ng-content select="header"></ng-content>
+   </div>
 
-<app-placeholder [lines]="1"></app-placeholder>
+   <ng-content></ng-content>
+</div>
 
-<app-divider> Segment Component </app-divider>
+<!-- EN EL COMPONENTE
 
 <app-segment>
    <header>
@@ -12,3 +16,4 @@
 
    <button class="ui primary button">Add Document</button>
 </app-segment>
+-->
