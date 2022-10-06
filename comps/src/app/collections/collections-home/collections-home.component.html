@@ -5,3 +5,15 @@
    [data]="data"
    [headers]="headers"
 ></app-table>
+
+<div class="ui hidden divider"></div>
+<app-divider> Table Menu </app-divider>
+
+<app-tabs>
+   <!-- prettier-ignore -->
+   <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="item">Biography</a>
+   <!-- prettier-ignore -->
+   <a routerLink="companies" routerLinkActive="active" class="item">Companies</a>
+   <!-- prettier-ignore -->
+   <a routerLink="partners" routerLinkActive="active" class="item">Partners</a>
+</app-tabs>
