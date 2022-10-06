@@ -2,16 +2,12 @@
 
 <button (click)="onClick()">Show Modal</button>
 
-<app-modal *ngIf="modalOpen"></app-modal>
+<app-modal (close)="onClick()" *ngIf="modalOpen">
+   <div modalTitle>Modal Title</div>
 
-<!-- 
+   <p>Some content for the modal window should go right here!</p>
 
-
-
-               9
-
-
-
-
-
- -->
+   <ng-container modalFooter>
+      <button class="ui button" (click)="onClick()">Close Me!</button>
+   </ng-container>
+</app-modal>
