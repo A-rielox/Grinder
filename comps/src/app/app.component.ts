@@ -8,3 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
    title = 'comps';
 }
+
+/* 
+
+               LIFE CYCLE HOOKS
+en views/items-list
+*/
