@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit, OnDestroy {
    @Output() close = new EventEmitter();
 
    constructor(private el: ElementRef) {
-      // console.log(el.nativeElement);    --> <aap-modal>...
+      // console.log(el.nativeElement);    --> <app-modal>...
    }
 
    ngOnInit(): void {

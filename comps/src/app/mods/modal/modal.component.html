@@ -14,9 +14,11 @@
 
       <!-- con css pa mostrar solo un footer, el default o uno q pase el user -->
       <div class="actions">
+         <!-- 🦶 footer custom -->
          <ng-content select="[modalFooter]"></ng-content>
       </div>
 
+      <!-- 🦶 footer default -->
       <div class="actions actions-default">
          <button (click)="onCloseClick()" class="ui button">OK</button>
       </div>
