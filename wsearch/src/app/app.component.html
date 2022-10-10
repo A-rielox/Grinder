@@ -1,3 +1,5 @@
-<app-search-bar (submitted)="onTerm($event)"></app-search-bar>
+<div class="container is-fluid">
+   <app-search-bar (submitted)="onTerm($event)"></app-search-bar>
 
-<app-page-list></app-page-list>
+   <app-page-list *ngIf="pages.length" [pages]="pages"></app-page-list>
+</div>

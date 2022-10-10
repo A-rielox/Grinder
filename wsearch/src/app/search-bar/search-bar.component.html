@@ -1,3 +1,11 @@
-<form (submit)="onFormSubmit($event)">
-   <input type="text" #inputcito (input)="term = inputcito.value" />
-</form>
+<div class="box">
+   <form (submit)="onFormSubmit($event)">
+      <input
+         placeholder="Enter search Term"
+         class="input"
+         type="text"
+         #inputcito
+         (input)="term = inputcito.value"
+      />
+   </form>
+</div>
