@@ -5,4 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class WikipediaService {
    constructor() {}
+
+   search(term: string) {
+      return `wiki results for: ${term}`;
+   }
 }
