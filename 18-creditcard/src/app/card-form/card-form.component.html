@@ -1,0 +1,39 @@
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+   <!-- NAME -->
+   <app-input label="Name" [control]="cardForm.controls.name"></app-input>
+
+   <!-- cardNumber -->
+   <app-input
+      label="Card Number"
+      [control]="cardForm.controls.cardNumber"
+   ></app-input>
+
+   <!-- expiration -->
+   <app-input
+      label="Expiration (MM/YY)"
+      [control]="cardForm.controls.expiration"
+   ></app-input>
+
+   <!-- securityCode -->
+   <app-input
+      label="Security Code"
+      [control]="cardForm.controls.securityCode"
+   ></app-input>
+
+   <button
+      [disabled]="cardForm.invalid"
+      type="submit"
+      class="button is-primary"
+   >
+      Submit
+   </button>
+</form>
+
+<!-- el borde rojo se le puede pasar aca con 
+   [ngClass]="{ 'is-danger': !cardForm.controls.name.valid && cardForm.controls.name.touched }" 
+-->
+
+<hr />
+<div>Form Contents: {{ cardForm.value | json }}</div>
+<div>Form is valid: {{ cardForm.valid }}</div>
+<div>Errors: {{ cardForm.controls.name.errors | json }}</div>
