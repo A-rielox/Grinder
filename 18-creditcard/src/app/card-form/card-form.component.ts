@@ -7,22 +7,34 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
    styleUrls: ['./card-form.component.css'],
 })
 export class CardFormComponent implements OnInit {
-   name = new FormControl('', [Validators.required, Validators.minLength(3)]);
-   cardNumber = new FormControl('', [
-      Validators.required,
-      Validators.minLength(16),
-      Validators.maxLength(16),
-   ]);
-   expiration = new FormControl('', [
-      Validators.required,
-      // 01/02 mes año
-      Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/),
-   ]);
-   securityCode = new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(3),
-   ]);
+   name = new FormControl('', {
+      validators: [Validators.required, Validators.minLength(3)],
+      nonNullable: true,
+   });
+   cardNumber = new FormControl('', {
+      validators: [
+         Validators.required,
+         Validators.minLength(16),
+         Validators.maxLength(16),
+      ],
+      nonNullable: true,
+   });
+   expiration = new FormControl('', {
+      validators: [
+         Validators.required,
+         // 01/02 mes año
+         Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/),
+      ],
+      nonNullable: true,
+   });
+   securityCode = new FormControl('', {
+      validators: [
+         Validators.required,
+         Validators.minLength(3),
+         Validators.maxLength(3),
+      ],
+      nonNullable: true,
+   });
 
    cardForm = new FormGroup({
       name: this.name,
@@ -37,6 +49,10 @@ export class CardFormComponent implements OnInit {
 
    onSubmit() {
       console.log(this.cardForm.controls);
+   }
+
+   onResetClick() {
+      this.cardForm.reset();
    }
 
    // showErrors() {
