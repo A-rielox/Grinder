@@ -1,0 +1,47 @@
+<form (ngSubmit)="onSubmit()" #emailForm="ngForm" #reference>
+   <input
+      name="email"
+      [(ngModel)]="email"
+      type="email"
+      pattern=".+@.+\..+"
+      required
+      #emailControl="ngModel"
+      [ngClass]="{ 'is-danger': emailControl.invalid && emailControl.touched }"
+      class="input"
+   />
+   <!-- && emailControl.errors p' q me quite el error dq puede ser null en el *ngIf -->
+
+   <!--  prettier-ignore -->
+   <ng-container *ngIf="emailControl.invalid && emailControl.touched && emailControl.errors">
+      <div *ngIf="emailControl['errors']['required']">
+         You must enter an email
+      </div>
+      <div *ngIf="emailControl['errors']['pattern']">
+         Please enter a valid email
+      </div>
+   </ng-container>
+
+   <button [disabled]="emailForm.invalid">Submit</button>
+</form>
+
+<hr />
+<div>input value: {{ email | json }}</div>
+<!-- dan = -->
+<div>input value: {{ emailForm.value.email | json }}</div>
+
+<div>form valid: {{ emailForm.valid | json }}</div>
+
+<div>
+   form validation errors: {{ emailForm.controls["email"]?.errors | json }}
+</div>
+
+<!--        #emailForm
+
+a las props de la form ( como valid o controls ... )
+es lo mismo q tener acceso al FormGroup de las reactive-forms
+-->
+
+<!--        #reference
+
+pal html element y lo q tenga
+-->
