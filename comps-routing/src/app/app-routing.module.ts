@@ -42,7 +42,7 @@ export class AppRoutingModule {}
 
 /*  RECORDAR EN EL IMPORTS (en app.module) TENGO Q PONER EL "AppRoutingModule" al final , x el orden en q busca las rutas, para que no calze primero el " path: '**' "
 
-   imports: [
+   imports: [  
       BrowserModule,
       ElementsModule,
       CollectionsModule,

@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-   // title = 'mathform';
+   title = 'emailclient';
 }
+
+/* 
+root url
+
+https://api.angular-email.com
+
+-------
+npm install semantic-ui-css
+*/
