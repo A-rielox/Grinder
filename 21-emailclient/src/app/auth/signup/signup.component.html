@@ -9,6 +9,10 @@
             <input type="text" formControlName="userName" />
          </div>
          {{ authForm.get("userName")!.errors | json }}
+         <div>
+            status
+            {{ authForm.get("userName")!.status | json }}
+         </div>
 
          <!-- PASSWORD -->
          <div class="field">
