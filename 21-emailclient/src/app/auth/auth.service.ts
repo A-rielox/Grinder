@@ -34,9 +34,7 @@ export class AuthService {
    signup(credentials: SignupCredentials) {
       return (
          this.http
-            .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials, {
-               withCredentials: true,
-            })
+            .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials)
             //si viene un error del http.post se salta el pipe q es lo q quiero
             .pipe(tap(() => this.signedin$.next(true)))
       );
@@ -45,9 +43,7 @@ export class AuthService {
    // revisa si ya esta logeado
    checkAuth() {
       return this.http
-         .get(this.rootUrl + '/auth/signedin', {
-            withCredentials: true,
-         })
+         .get(this.rootUrl + '/auth/signedin')
          .pipe(tap((res) => console.log(res)));
    }
 }
