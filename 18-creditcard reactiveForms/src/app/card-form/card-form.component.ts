@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
    styleUrls: ['./card-form.component.css'],
 })
 export class CardFormComponent implements OnInit {
-   // 🟡 para evitar q crea q es AbstractForm primero defino las FormControl y luego el FormGroup
+   // 🟡 para evitar q crea q es AbstractForm primero defino las FormControl y luego el FormGroup  
    // 🟡 el nonNullable es p' evitar q sea null y en la .html poder poner con confianza el " ! " al pasar la prop al child ( [cardNumber]="cardForm.get('cardNumber')!.value" )
    
    name = new FormControl('', {

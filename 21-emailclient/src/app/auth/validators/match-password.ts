@@ -4,8 +4,8 @@ import { FormGroup, Validator } from '@angular/forms';
 @Injectable({ providedIn: 'root' })
 export class MatchPassword implements Validator {
    // puede ser FormGroup o FormControl dependiendo d lo q quiera validar
+   // 🔴
    validate(formGroup: FormGroup) {
-      // 🔴
       const { password, passwordConfirmation } = formGroup.value;
 
       if (password === passwordConfirmation) {

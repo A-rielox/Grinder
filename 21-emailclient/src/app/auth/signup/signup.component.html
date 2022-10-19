@@ -4,36 +4,43 @@
 
       <form [formGroup]="authForm" class="ui form">
          <!-- NAME -->
-         <div class="field">
-            <label>User Name</label>
-            <input type="text" formControlName="userName" />
-         </div>
-         {{ authForm.get("userName")!.errors | json }}
-         <div>
-            status
-            {{ authForm.get("userName")!.status | json }}
-         </div>
+         <app-input
+            inputType="text"
+            label="User Name"
+            [control]="authForm.controls.userName"
+         ></app-input>
 
          <!-- PASSWORD -->
-         <div class="field">
-            <label>Password</label>
-            <input type="text" formControlName="password" />
-         </div>
-         {{ authForm.get("password")!.errors | json }}
+         <app-input
+            inputType="password"
+            label="Password"
+            [control]="authForm.controls.password"
+         ></app-input>
 
          <!-- PASSWORD-CONFIRMATION -->
-         <div class="field">
-            <label>Password Confirmation</label>
-            <input type="text" formControlName="passwordConfirmation" />
+         <app-input
+            inputType="password"
+            label="Password Confirmation"
+            [control]="authForm.controls.passwordConfirmation"
+         ></app-input>
+
+         <div
+            *ngIf="
+               authForm.get('password')?.touched &&
+               authForm.get('passwordConfirmation')?.touched &&
+               authForm.errors
+            "
+            class="ui red basic label"
+         >
+            <p *ngIf="authForm.errors['passwordsDontMatch']">
+               Password and Password Confirmation must match
+            </p>
          </div>
-         {{ authForm.get("passwordConfirmation")!.errors | json }}
 
-         <br />
          <!-- SUBMIT BUTTON -->
-         <button class="ui green button submit">Submit</button>
-
-         <hr />
-         <p>FormGroup validator: {{ authForm.errors | json }}</p>
+         <div>
+            <button class="ui green button submit">Submit</button>
+         </div>
       </form>
    </div>
 </div>
