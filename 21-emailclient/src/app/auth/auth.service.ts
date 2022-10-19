@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, tap } from 'rxjs';
 
 interface SignupCredentials {
    username: string;
@@ -16,6 +17,7 @@ interface SignupResponse {
 })
 export class AuthService {
    rootUrl = 'https://api.angular-email.com';
+   signedin$ = new BehaviorSubject(false);
 
    constructor(private http: HttpClient) {}
 
@@ -28,10 +30,28 @@ export class AuthService {
       );
    }
 
+   // 🟡 ,{withCredentials: true} para q Angular no descarte las cookies y ahora las guarde y reenvie
    signup(credentials: SignupCredentials) {
-      return this.http.post<SignupResponse>(
-         this.rootUrl + '/auth/signup',
-         credentials
+      return (
+         this.http
+            .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials, {
+               withCredentials: true,
+            })
+            //si viene un error del http.post se salta el pipe q es lo q quiero
+            .pipe(tap(() => this.signedin$.next(true)))
       );
    }
+
+   // revisa si ya esta logeado
+   checkAuth() {
+      return this.http
+         .get(this.rootUrl + '/auth/signedin', {
+            withCredentials: true,
+         })
+         .pipe(tap((res) => console.log(res)));
+   }
 }
+
+// yellow la razon de usar un subject ( q es un observable y observer ) es q puede emitir eventos desde fuera de el (con .next()) en cualquier momento.
+// EXPLICACION EN VIDEO 7-8 DE CAP 22
+// yellow con BehaviorSubject tengo acceso al ultimo valor emitido por el subject

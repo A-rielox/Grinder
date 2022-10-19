@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { AuthService } from './auth/auth.service';
 
 @Component({
    selector: 'app-root',
@@ -6,13 +8,27 @@ import { Component } from '@angular/core';
    styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-   title = 'emailclient';
+   // 🟢 signedin = false;
+   signedin$: BehaviorSubject<boolean>;
+
+   constructor(private authService: AuthService) {
+      this.signedin$ = this.authService.signedin$;
+   }
+
+   ngOnInit() {
+      this.authService.checkAuth().subscribe(() => {});
+   }
 }
 
-/* 
-root url
+// 🟢 p' obtener el valor del signedin ocupaba 🟢
+// 🟢
+// ngOnInit() {
+//    this.authService.signedin$.subscribe((signedin) => {
+//       this.signedin = signedin;
+//    });
+// }
 
-https://api.angular-email.com
+/* 
 
 -------
 npm install semantic-ui-css
