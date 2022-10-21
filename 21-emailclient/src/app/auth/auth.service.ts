@@ -17,6 +17,11 @@ interface SignedinResponse {
    username: string;
 }
 
+interface SigninCredentials {
+   username: string;
+   password: string;
+}
+
 @Injectable({
    providedIn: 'root',
 })
@@ -51,7 +56,7 @@ export class AuthService {
          .get<SignedinResponse>(this.rootUrl + '/auth/signedin')
          .pipe(
             tap((res) => {
-               console.log(res);
+               console.log('CHECK AUTH RESPONSE', res);
 
                this.signedin$.next(res.authenticated);
             })
@@ -61,8 +66,18 @@ export class AuthService {
    signout() {
       return this.http.post(this.rootUrl + '/auth/signout', {}).pipe(
          tap((res) => {
-            console.log(res);
+            console.log('SIGN out RESPONSE', res);
             this.signedin$.next(false);
+         })
+      );
+   }
+
+   signin(credentials: SigninCredentials) {
+      return this.http.post(this.rootUrl + '/auth/signin', credentials).pipe(
+         // si entra credenciales incorrectas, viene error como response del http post y se salta el tap()
+         tap((res) => {
+            console.log('SIGN IN RESPONSE', res);
+            this.signedin$.next(true);
          })
       );
    }

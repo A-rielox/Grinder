@@ -5,6 +5,7 @@ import {
    FormGroup,
    Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatchPassword } from '../validators/match-password';
 import { UniqueUsername } from '../validators/unique-username';
@@ -63,7 +64,8 @@ export class SignupComponent implements OnInit {
    constructor(
       private matchPassword: MatchPassword,
       private uniqueUsername: UniqueUsername,
-      private authService: AuthService
+      private authService: AuthService,
+      private router: Router
    ) {}
 
    ngOnInit(): void {}
@@ -73,7 +75,7 @@ export class SignupComponent implements OnInit {
          return;
       }
 
-      console.log(this.authForm.value);
+      console.log('SIGN UP FORM', this.authForm.value);
       //{username: 'lkjoiuyth', password: '1234', passwordConfirmation: '1234'}
 
       // en lugar de escribir el pipe con el catchError ( p' la respuesta de nombre ocupado ) pongo el {} en el subscribe p' la accion cuando venga el error
@@ -82,7 +84,8 @@ export class SignupComponent implements OnInit {
          .signup(<SignupCredentials>this.authForm.value)
          .subscribe({
             next: (response) => {
-               // navigate to some other route
+               // navigate to
+               this.router.navigateByUrl('/inbox');
             },
             // complete(){},
             error: (err) => {
