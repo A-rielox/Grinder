@@ -12,6 +12,10 @@
             >
          </ng-container>
 
+         <a routerLink="/inbox" routerLinkActive="active" class="ui item"
+            >inbox</a
+         >
+
          <ng-container *ngIf="!(signedin$ | async)">
             <a
                routerLink="/"
