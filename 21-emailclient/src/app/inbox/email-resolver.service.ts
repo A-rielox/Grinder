@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import {
    ActivatedRouteSnapshot,
    Resolve,
+   Router,
    RouterStateSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, EMPTY, Observable } from 'rxjs';
 import { Email } from './email';
 import { EmailService } from './email.service';
 
@@ -12,7 +13,7 @@ import { EmailService } from './email.service';
    providedIn: 'root',
 })
 export class EmailResolverService implements Resolve<Email> {
-   constructor(private emailService: EmailService) {}
+   constructor(private emailService: EmailService, private router: Router) {}
 
    resolve(
       route: ActivatedRouteSnapshot,
@@ -20,6 +21,13 @@ export class EmailResolverService implements Resolve<Email> {
    ): Email | Observable<Email> | Promise<Email> {
       const { id } = route.params;
 
-      return this.emailService.getEmail(id);
+      return this.emailService.getEmail(id).pipe(
+         catchError(() => {
+            this.router.navigateByUrl('/inbox/not-found');
+
+            //rxjs y typescript me piden devolver algo como observable, pero en realidad no lo necesito, xq al navegar hacia otro lado se cancela el resolver, => devuelvo el EMPTY ( q es un observable ya marcado como completed )
+            return EMPTY;
+         })
+      );
    }
 }

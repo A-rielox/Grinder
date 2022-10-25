@@ -16,8 +16,12 @@ export class EmailShowComponent implements OnInit {
    constructor(private route: ActivatedRoute) {
       // LA INFO DEL RESOLVER
       this.route.data.subscribe((data) => (this.email = data['email']));
-      // {email: {…}}
+      // {email: {…}} --> el data object
       // en "email" xq en el inbox-routing "resolve: { email: EmailResolverService },"
+      //
+      // la misma info en el snapshot
+      // this.route.snapshot.data.email
+      // si se regenara el mismo componente con otra data, no se genera la info actualizada en el snapshot, xeso es mejor con el observable
    }
 
    ngOnInit() {
