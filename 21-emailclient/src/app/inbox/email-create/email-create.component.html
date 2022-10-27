@@ -5,9 +5,8 @@
 <app-modal *ngIf="showModal" (dismiss)="showModal = false">
    <div modalTitle>Compose</div>
 
-   <app-email-form></app-email-form>
-
-   <div modalFooter>
-      <button class="ui primary button">Custom Button</button>
-   </div>
+   <app-email-form
+      [email]="email"
+      (emailSubmit)="onSubmit($event)"
+   ></app-email-form>
 </app-modal>

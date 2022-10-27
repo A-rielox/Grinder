@@ -28,6 +28,7 @@ interface SigninCredentials {
 export class AuthService {
    rootUrl = 'https://api.angular-email.com';
    signedin$ = new BehaviorSubject<any>(null);
+   username: string = '';
 
    constructor(private http: HttpClient) {}
 
@@ -46,7 +47,12 @@ export class AuthService {
          this.http
             .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials)
             //si viene un error del http.post se salta el pipe q es lo q quiero
-            .pipe(tap(() => this.signedin$.next(true)))
+            .pipe(
+               tap((res) => {
+                  this.signedin$.next(true);
+                  this.username = res.username;
+               })
+            )
       );
    }
 
@@ -59,6 +65,7 @@ export class AuthService {
                console.log('CHECK AUTH RESPONSE', res);
 
                this.signedin$.next(res.authenticated);
+               this.username = res.username;
             })
          );
    }
@@ -73,13 +80,16 @@ export class AuthService {
    }
 
    signin(credentials: SigninCredentials) {
-      return this.http.post(this.rootUrl + '/auth/signin', credentials).pipe(
-         // si entra credenciales incorrectas, viene error como response del http post y se salta el tap()
-         tap((res) => {
-            console.log('SIGN IN RESPONSE', res);
-            this.signedin$.next(true);
-         })
-      );
+      return this.http
+         .post<{ username: string }>(this.rootUrl + '/auth/signin', credentials)
+         .pipe(
+            // si entra credenciales incorrectas, viene error como response del http post y se salta el tap()
+            tap((res) => {
+               console.log('SIGN IN RESPONSE', res);
+               this.signedin$.next(true);
+               this.username = res.username;
+            })
+         );
    }
 }
 
