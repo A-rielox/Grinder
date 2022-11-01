@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, mergeMap, pluck, switchMap } from 'rxjs/operators';
+import {
+   filter,
+   map,
+   mergeMap,
+   share,
+   switchMap,
+   toArray,
+} from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 interface OpenWeatherResponse {
@@ -33,7 +40,15 @@ export class ForecastService {
             this.http.get<OpenWeatherResponse>(this.url, { params })
          ),
          map((res) => res?.list),
-         mergeMap((value) => of(...value))
+         mergeMap((value) => of(...value)),
+         filter((value, index) => index % 8 === 0),
+         map((value) => {
+            return { dateString: value.dt_txt, temp: value.main.temp };
+         }),
+         // recolecta los datos y cuando el observable se marca como completo => los emite como un array
+         toArray(),
+         // yellow 🟡 P' Q AL TENER VARIAS SUBSCRIPCIONES A ESTE OBSERVABLE NO ME CORRA TODO OTRA VEZ X C/UNO 🟡 yellow
+         share()
       );
    }
 
