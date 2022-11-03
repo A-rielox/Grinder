@@ -6,9 +6,13 @@ import {
    mergeMap,
    share,
    switchMap,
+   tap,
    toArray,
 } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { NotificationsService } from '../notifications/notifications.service';
+import { catchError } from 'rxjs';
+import { throwError } from 'rxjs';
 
 interface OpenWeatherResponse {
    list: {
@@ -25,7 +29,10 @@ interface OpenWeatherResponse {
 export class ForecastService {
    private url = 'https://api.openweathermap.org/data/2.5/forecast';
 
-   constructor(private http: HttpClient) {}
+   constructor(
+      private http: HttpClient,
+      private notificationsService: NotificationsService
+   ) {}
 
    getForecast() {
       return this.getCurrentLocation().pipe(
@@ -62,7 +69,19 @@ export class ForecastService {
             (err) => observer.error(err)
             // me pone el Observable en err state y ya no pedo emitir valores y pasa el valor a la fcn de error
          );
-      });
+      }).pipe(
+         tap(() => {
+            this.notificationsService.addSuccess('Got your location. 👍');
+         }),
+         catchError((err) => {
+            this.notificationsService.addError(
+               'Failed to get your location. 💩'
+            );
+
+            // en catchError SIEMPRE hay q retornar un observable
+            return throwError(err);
+         })
+      );
    }
 }
 
