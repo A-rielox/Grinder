@@ -42,7 +42,7 @@ export class ForecastService {
                .set('lon', String(coords.longitude))
                .set('units', 'metric')
                .set('appid', 'ca8b5facabb63bd9ace383475dbcabc4');
-         }),
+         }), //⭐
          switchMap((params) =>
             this.http.get<OpenWeatherResponse>(this.url, { params })
          ),
@@ -85,7 +85,7 @@ export class ForecastService {
    }
 }
 
-/*       switchMap()
+/*       switchMap()     ⭐
 
 OperatorFunction<T, ObservedValueOf<O> | R>: A function that returns an Observable that emits the result of applying the projection function (and the optional deprecated resultSelector) to each item emitted by the source Observable and taking only the values from the most recently projected inner Observable.
 
