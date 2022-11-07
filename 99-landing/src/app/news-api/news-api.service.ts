@@ -1,21 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import {
-   filter,
-   map,
-   mergeMap,
-   share,
-   switchMap,
-   take,
-   tap,
-   toArray,
-} from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 export interface Article {
    title: string;
    // description: string;
    url: string;
+   source: {
+      name: string;
+   };
 }
 
 interface NewsApiResponse {
@@ -39,7 +33,6 @@ export class NewsApiService {
 
    constructor(private http: HttpClient) {
       this.numberOfPages = new Subject();
-
       this.pagesInput = new Subject();
 
       this.pagesOutput = this.pagesInput.pipe(
