@@ -9,6 +9,7 @@
 }
 
 /* + pal sibling */
+/* el display: block se lo aplica al sibling solamente */
 .actions:empty + .actions-default {
    display: block;
 }
