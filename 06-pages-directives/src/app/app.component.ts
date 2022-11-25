@@ -110,4 +110,18 @@ export class AppComponent {
   checkWindowIndex(index: number) {
     return Math.abs(this.currentPage - index) < 5;
   }
+
+  // -------------------------------> MAS CHIDO con la class1.directive.ts
+  // getClass(level: string){
+  //   const classes = []
+  //   //'star', 'oro', 'plata'
+
+  //   if(level = 'star'){
+  //     classes.push(#1cb330)
+  //   } else if(level = 'gold'){
+  //     classes.push(#aca475)
+  //   }
+  // }
+
+  // en el html <div [ngClass]="getClass(level)"
 }

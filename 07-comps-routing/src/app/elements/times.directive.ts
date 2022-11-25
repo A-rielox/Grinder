@@ -19,5 +19,7 @@ export class TimesDirective {
    ) {}
 }
 
+// ng g directive elements/Times --skip-tests true
+
 // ViewContainerRef es la referencia al elemento al q le aplico este microship
 // TemplateRef es la referencia a los elementos q estan dentro del vcRef

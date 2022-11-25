@@ -20,6 +20,12 @@ const routes: Routes = [{ path: 'elements', component: ElementsHomeComponent }];
 // 🍋 al agregar lazy-loading la ruta aqui es relativa a la q pongo donde cargo el lazy-loading ( en app-routing la cargue con " import('./elements/elements.module') " x eso al ponerla aca como " path: ' ' " accedo a ella como /elements, que es la que ya esta cargada en app-routing )
 /* EL PATH EN APP-ROUTING
 
-loadChildren: () =>
-         import('./elements/elements.module').then((m) => m.ElementsModule),
+{
+   // lazy-loading
+   path: 'elements',
+   loadChildren: () =>
+      import('./elements/elements.module').then((m) => m.ElementsModule),
+},
+
+
 */

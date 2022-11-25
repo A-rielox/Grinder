@@ -20,3 +20,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
    bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+/*  RECORDAR EN EL IMPORTS (en app.module) TENGO Q PONER EL "AppRoutingModule" al final , x el orden en q busca las rutas, para que no calze primero el " path: '**' "
+
+   imports: [  
+      BrowserModule,
+      ElementsModule,
+      CollectionsModule,
+      AppRoutingModule,
+   ],
+*/

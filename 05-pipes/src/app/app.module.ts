@@ -5,14 +5,9 @@ import { AppComponent } from './app.component';
 import { ConvertPipe } from './convert.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ConvertPipe
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [AppComponent, ConvertPipe],
+   imports: [BrowserModule],
+   providers: [],
+   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
