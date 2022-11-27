@@ -7,7 +7,8 @@ import { map } from 'rxjs/operators';
 })
 export class AnswerHighlightDirective {
    constructor(private el: ElementRef, private controlName: NgControl) {
-      // console.log(this.controlName); el input
+      // private controlName: NgControl --> me da acceso al control ( el input ) en el q lo pongo
+      // console.log(this.controlName.control); el input
    }
 
    ngOnInit() {

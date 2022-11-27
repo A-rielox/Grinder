@@ -28,19 +28,14 @@ export class EquationComponent implements OnInit {
          answer: this.answer,
       },
       // validacion de la FORM
-      [
-         MathValidators.addition('answer', 'a', 'b'),
-
-         // NO reusable por sumas con otros nombres de variables
-         // MathValidators.addition,
-      ]
+      [MathValidators.addition('answer', 'a', 'b')]
    );
 
    // scan es como 'reduce', scan((acc,curr) => acc + curr, 0 )
    // 1  3  5 --->
    // 1  4  9 --->
 
-   // " this.mathForm.statusChanges " emite un evento (es un EventEmitter) cada q cambia el status de la form de valid a invalid ( cada q se ingresa un valor )
+   // " this.mathForm.statusChanges " emite un evento (es un EventEmitter)  cada q se ingresa un valor al input, lo q emite es VALID o INVALID segun es status de la form
    //
    // con .valueChanges.subscribe() haria una operacion cada vez q cambia el valor del input
    //

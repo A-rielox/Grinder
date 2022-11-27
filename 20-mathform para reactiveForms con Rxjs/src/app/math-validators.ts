@@ -30,4 +30,14 @@ export class MathValidators {
    //        return { addition: true };
    //     }
    // }
+   //
+   // en la validacion de la forma la llamaba sin argumantos
+   // mathForm = new FormGroup(
+   //    {
+   //       a: this.a,
+   //       b: this.b,
+   //       answer: this.answer,
+   //    },
+   //    [MathValidators.addition]
+   // );
 }
