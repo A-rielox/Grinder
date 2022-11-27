@@ -36,7 +36,7 @@ export class EquationComponent implements OnInit {
       ]
    );
 
-   // scan en como 'reduce', scan((acc,curr) => acc + curr, 0 )
+   // scan es como 'reduce', scan((acc,curr) => acc + curr, 0 )
    // 1  3  5 --->
    // 1  4  9 --->
 
