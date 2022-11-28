@@ -29,3 +29,14 @@ export class UniqueUsername implements AsyncValidator {
 }
 // la respuesta SI es q ya esta en uso es 422 ( error )
 // el httpClient observable trata a las respuestas con status de error => cuando me respondan con un error en lugar de respuesta buena ( 200 o algo asi ), mi observable va a emitir un error
+
+/*  al poner tipo  "FormControl"  ( en lugar de AbstractControl )  en 
+
+         validate(control: FormControl):
+   
+   debo usar  "as AsyncValidatorFn" en 
+
+         [this.uniqueUsername.validate as AsyncValidatorFn]
+
+   o aca usar "validate(control: AbstractControl)"
+*/

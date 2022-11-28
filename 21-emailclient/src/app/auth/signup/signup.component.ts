@@ -61,6 +61,33 @@ export class SignupComponent implements OnInit {
       { validators: [Validators.required, this.matchPassword.validate] }
    );
 
+   /*  p' NO tener el error q me fuerza a poner el '' uso AbstractControl
+   como tipo en la fcn validate
+   
+   export class MatchPassword implements Validator {
+   validate(formGroup: AbstractControl) {
+         const { password, passwordConfirmation } = formGroup.value;
+         console.log(password, passwordConfirmation);
+
+         if (password === passwordConfirmation) {
+            return null;
+         } else {
+            return { passwordsDontMatch: true };
+         }
+      }
+   }
+
+   y asi ya puedo quitar el Validators.required
+
+
+   o 😎
+
+   lo dejo como tipo FormGroup y aca pongo
+
+   { validators: [this.matchPassword.validate as ValidatorFn] }
+
+   */
+
    constructor(
       private matchPassword: MatchPassword,
       private uniqueUsername: UniqueUsername,
