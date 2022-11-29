@@ -46,7 +46,7 @@ export class AuthService {
       return (
          this.http
             .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials)
-            //si viene un error del http.post se salta el pipe q es lo q quiero
+            //si viene un error del http.post se salta el tap q es lo q quiero
             .pipe(
                tap((res) => {
                   this.signedin$.next(true);
@@ -94,5 +94,5 @@ export class AuthService {
 }
 
 // yellow la razon de usar un subject ( q es un observable y observer ) es q puede emitir eventos desde fuera de el (con .next()) en cualquier momento.
-// EXPLICACION EN VIDEO 7-8 DE CAP 22
+// EXPLICACION EN VIDEO 297-298 (oh no, more rxjs - using behaviorSubjects) DE seccion 22
 // yellow con BehaviorSubject tengo acceso al ultimo valor emitido por el subject

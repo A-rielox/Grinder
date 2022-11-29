@@ -116,8 +116,10 @@ export class SignupComponent implements OnInit {
             },
             // complete(){},
             error: (err) => {
+               // error se llama cuando hay un error en el request
+               // " !err.status " es lo mismo q " err.status === 0 "
                if (!err.status) {
-                  // va a meter un error a los " errores de la form "
+                  // yellow 🟡 va a meter un error a los " errores de la form "
                   this.authForm.setErrors({ noConnection: true });
                } else {
                   this.authForm.setErrors({ unknownError: true });
