@@ -13,6 +13,7 @@ import { EmailService } from './email.service';
    providedIn: 'root',
 })
 export class EmailResolverService implements Resolve<Email> {
+   // Resolve<Email> el tipo <Email> es p' especificar el tipo de data q se va a devolver del resolver
    constructor(private emailService: EmailService, private router: Router) {}
 
    resolve(

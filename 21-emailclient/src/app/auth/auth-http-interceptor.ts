@@ -3,6 +3,7 @@ import {
    HttpHandler,
    HttpInterceptor,
    HttpRequest,
+   HttpEventType,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -35,6 +36,8 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 }
 
 /*  PARA PODER OCUPAR EL INTERCEPTOR, SE EJECUTAN EN EL ORDEN Q LOS PONGO ACA
+
+                        en AppModule
 
    providers: [
       {

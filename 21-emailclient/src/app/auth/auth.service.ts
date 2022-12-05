@@ -27,7 +27,7 @@ interface SigninCredentials {
 })
 export class AuthService {
    rootUrl = 'https://api.angular-email.com';
-   signedin$ = new BehaviorSubject<any>(null);
+   signedin$ = new BehaviorSubject<any>(null); // null p' indicar q no conocemos es estado de autenticacion todavia
    username: string = '';
 
    constructor(private http: HttpClient) {}
@@ -45,7 +45,10 @@ export class AuthService {
    signup(credentials: SignupCredentials) {
       return (
          this.http
-            .post<SignupResponse>(this.rootUrl + '/auth/signup', credentials)
+            .post<SignupResponse>(
+               this.rootUrl + '/auth/signup',
+               credentials /* , {withCredentials: true} */
+            )
             //si viene un error del http.post se salta el tap q es lo q quiero
             .pipe(
                tap((res) => {
@@ -62,7 +65,7 @@ export class AuthService {
          .get<SignedinResponse>(this.rootUrl + '/auth/signedin')
          .pipe(
             tap((res) => {
-               console.log('CHECK AUTH RESPONSE', res);
+               // console.log(res);  {authenticated: true, username: 'arielox1'}
 
                this.signedin$.next(res.authenticated);
                this.username = res.username;
