@@ -57,6 +57,7 @@ export class NewsApiService {
       );
    }
 
+   // solo para hacer mas intuitivo a la hora de saber como llamar la sig pag
    getPage(page: number) {
       this.pagesInput.next(page);
    }

@@ -18,6 +18,7 @@ export class NotificationsService {
    constructor() {
       this.messagesInput = new Subject<Command>();
 
+      // explicacion en 475
       this.messagesOutput = this.messagesInput.pipe(
          scan((acc: Command[], value: Command) => {
             if (value.type === 'clear') {

@@ -80,6 +80,10 @@ export class ForecastService {
 
             // en catchError SIEMPRE hay q retornar un observable
             return throwError(err);
+            // es lo mismo q
+            // return new Observable(observer => {
+            //    observer.error(err)
+            // })
          })
       );
    }
