@@ -7,7 +7,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
   selector: '[appClass]',
 })
 export class ClassDirective {
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef) {} // element es el elemento en el html en el q pongo esta directiva
 
   @Input('appClass') set classNames(classObj: any) {
     // for in itera sobre las keys de un object
