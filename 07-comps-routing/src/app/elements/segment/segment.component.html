@@ -25,3 +25,41 @@
 }
 
 -->
+
+<!-- PUEDO OCUPAR OTROS SELECTORE
+
+   CON UN ATRIBUTO
+
+  <div class="ui placeholder segment">
+   <div class="ui icon header">
+      <ng-content select="appHeader"></ng-content>
+   </div>
+
+   <ng-content></ng-content>
+  </div>
+---------------------------
+
+<app-segment>
+   <div appHeader>
+      <i class="pdf file outline icon"></i>
+      No documents are listed for this customer.
+   </div>
+
+   <button class="ui primary button">Add Document</button>
+</app-segment>
+
+O CON UNA CLASE
+
+...
+<ng-content select=".header"></ng-content>
+...
+-------------
+<app-segment>
+   <div class="header">
+      <i class="pdf file outline icon"></i>
+      No documents are listed for this customer.
+   </div>
+
+   <button class="ui primary button">Add Document</button>
+</app-segment>
+-->
