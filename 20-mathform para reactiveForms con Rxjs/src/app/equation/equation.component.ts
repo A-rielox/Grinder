@@ -65,7 +65,7 @@ export class EquationComponent implements OnInit {
                b: this.randomNumber(),
                answer: '',
             });
-            // a setValue() le tengo q pasar todos los valores de la form, si solo quiero resetear algunos ( xq pueden ser muchos inputs ) ocupo .patchValue({ ... })
+            // a setValue() le tengo q pasar todos los valores de la form, si solo quiero resetear algunos ( xq pueden ser muchos inputs ) ocupo .patchValue({ solo valores a actualizar })
          });
    }
 
