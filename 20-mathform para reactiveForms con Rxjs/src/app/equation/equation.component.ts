@@ -35,7 +35,7 @@ export class EquationComponent implements OnInit {
    // 1  3  5 --->
    // 1  4  9 --->
 
-   // " this.mathForm.statusChanges " emite un evento (es un EventEmitter)  cada q se ingresa un valor al input, lo q emite es VALID o INVALID segun es status de la form
+   // " this.mathForm.statusChanges " emite un evento (es un Observable)  cada q se ingresa un valor al input, lo q emite es VALID o INVALID segun es status de la form
    //
    // con .valueChanges.subscribe() haria una operacion cada vez q cambia el valor del input
    //
