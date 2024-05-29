@@ -3,7 +3,7 @@ import { AsyncValidator, FormControl } from '@angular/forms';
 import { catchError, map, Observable, of } from 'rxjs';
 import { AuthService } from '../auth.service';
 
-@Injectable({ providedIn: 'root' }) // para poder ocupar inyeccion con httpclient
+@Injectable({ providedIn: 'root' }) // para poder ocupar inyeccion, ya q al ocupar injeccion entonces este va a tener acceso a httpClient aca
 export class UniqueUsername implements AsyncValidator {
    constructor(private authService: AuthService) {}
 
